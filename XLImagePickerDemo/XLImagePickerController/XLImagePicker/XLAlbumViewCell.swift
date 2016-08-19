@@ -16,6 +16,7 @@ class XLAlbumViewCell: UICollectionViewCell {
     var image: UIImage? {
         didSet {
             self.imageView.image = image
+            self.imageView.contentMode = .ScaleAspectFill
         }
     }
 

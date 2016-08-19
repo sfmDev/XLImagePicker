@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		826B88D91D656030005D67AB /* XLAlbumPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826B88D81D656030005D67AB /* XLAlbumPickerViewController.swift */; };
+		826B88DB1D656192005D67AB /* XLAlbumPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 826B88DA1D656192005D67AB /* XLAlbumPickerViewController.xib */; };
+		826B88DE1D65645A005D67AB /* XLAlbumPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826B88DC1D65645A005D67AB /* XLAlbumPickerCell.swift */; };
+		826B88DF1D65645A005D67AB /* XLAlbumPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 826B88DD1D65645A005D67AB /* XLAlbumPickerCell.xib */; };
 		8281982F1D508B1500D42A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8281982E1D508B1500D42A00 /* AppDelegate.swift */; };
 		828198311D508B1500D42A00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828198301D508B1500D42A00 /* ViewController.swift */; };
 		828198341D508B1500D42A00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828198321D508B1500D42A00 /* Main.storyboard */; };
@@ -23,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		826B88D81D656030005D67AB /* XLAlbumPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLAlbumPickerViewController.swift; sourceTree = "<group>"; };
+		826B88DA1D656192005D67AB /* XLAlbumPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLAlbumPickerViewController.xib; sourceTree = "<group>"; };
+		826B88DC1D65645A005D67AB /* XLAlbumPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLAlbumPickerCell.swift; sourceTree = "<group>"; };
+		826B88DD1D65645A005D67AB /* XLAlbumPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLAlbumPickerCell.xib; sourceTree = "<group>"; };
 		8281982B1D508B1500D42A00 /* XLImagePickerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XLImagePickerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8281982E1D508B1500D42A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		828198301D508B1500D42A00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +93,10 @@
 			isa = PBXGroup;
 			children = (
 				828198431D508BC400D42A00 /* XLImageViewController.swift */,
+				826B88D81D656030005D67AB /* XLAlbumPickerViewController.swift */,
+				826B88DA1D656192005D67AB /* XLAlbumPickerViewController.xib */,
+				826B88DC1D65645A005D67AB /* XLAlbumPickerCell.swift */,
+				826B88DD1D65645A005D67AB /* XLAlbumPickerCell.xib */,
 				828198441D508BC400D42A00 /* XLImageViewController.xib */,
 				8281984D1D50963A00D42A00 /* XLImageBrowerView.swift */,
 				828198491D5093F600D42A00 /* XLAlbumView.swift */,
@@ -157,11 +169,13 @@
 			files = (
 				8281984C1D50941F00D42A00 /* XLAlbumView.xib in Resources */,
 				828198461D508BC400D42A00 /* XLImageViewController.xib in Resources */,
+				826B88DB1D656192005D67AB /* XLAlbumPickerViewController.xib in Resources */,
 				828198391D508B1500D42A00 /* LaunchScreen.storyboard in Resources */,
 				828198361D508B1500D42A00 /* Assets.xcassets in Resources */,
 				828198521D50A77B00D42A00 /* XLAlbumViewCell.xib in Resources */,
 				828198341D508B1500D42A00 /* Main.storyboard in Resources */,
 				828198481D508DD300D42A00 /* Assets.xcassets in Resources */,
+				826B88DF1D65645A005D67AB /* XLAlbumPickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,10 +186,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				826B88D91D656030005D67AB /* XLAlbumPickerViewController.swift in Sources */,
 				8281984E1D50963A00D42A00 /* XLImageBrowerView.swift in Sources */,
 				8281984A1D5093F600D42A00 /* XLAlbumView.swift in Sources */,
 				828198451D508BC400D42A00 /* XLImageViewController.swift in Sources */,
 				828198311D508B1500D42A00 /* ViewController.swift in Sources */,
+				826B88DE1D65645A005D67AB /* XLAlbumPickerCell.swift in Sources */,
 				828198511D50A77B00D42A00 /* XLAlbumViewCell.swift in Sources */,
 				8281982F1D508B1500D42A00 /* AppDelegate.swift in Sources */,
 			);
