@@ -20,6 +20,7 @@ public struct Handle {
     static let backgroudColor = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1.0)
     static let tintColor = UIColor(red: 0/255, green: 150/255, blue: 136/255, alpha: 1.0)
     static let KUpImageCountNotification: String = "upImageCountNotification"
+    static let KUpImageWithAssetNotification: String = "upImageWithAssetNotification"
 }
 
 class XLImageViewController: UIViewController {
@@ -63,8 +64,6 @@ class XLImageViewController: UIViewController {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(XLImageViewController.updateImageCountLabel(_:)), name: Handle.KUpImageCountNotification, object: nil)
 
-//        let smartAlbum = PHAssetCollection.fetchAssetCollectionsWithType(.SmartAlbum, subtype: .AlbumRegular, options: nil)
-//        print(smartAlbum)
         self.fetchCollections()
         self.createAlbumBtn()
         self.updateViewWithCollectionItem(self.collectionItems.first!)
@@ -74,7 +73,6 @@ class XLImageViewController: UIViewController {
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         var allAblums: [Dictionary<String,AnyObject>] = []
-//        var allAblums: [String: AnyObject] = []
         let smartAlbums: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.SmartAlbum, subtype: .AlbumRegular, options: nil)
 
         var fetchAlbums: ((collections: PHFetchResult) -> Void)
@@ -84,10 +82,6 @@ class XLImageViewController: UIViewController {
             let options = PHFetchOptions.init()
             options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.Image.rawValue)
             options.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
-
-//            for item in collections {
-//
-//            }
 
             for i in 0 ..< collections.count {
                 if collections.objectAtIndex(i) is PHAssetCollection {

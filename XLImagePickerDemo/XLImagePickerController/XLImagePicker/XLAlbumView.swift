@@ -23,6 +23,7 @@ enum Direction {
 
 private extension Selector {
     static let bePanned = #selector(XLAlbumView.bePanned(_:))
+    static let updateImage = #selector(XLAlbumView.upDatedImage(_:))
 }
 
 final class XLAlbumView: UIView, PHPhotoLibraryChangeObserver, UIGestureRecognizerDelegate {
@@ -52,6 +53,11 @@ final class XLAlbumView: UIView, PHPhotoLibraryChangeObserver, UIGestureRecogniz
     let dragDiff: CGFloat     = 20.0
 
     var seletedImageArray: [Int] = []
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: .updateImage, name: Handle.KUpImageWithAssetNotification, object: nil)
+    }
 
     static func instance() -> XLAlbumView {
         return UINib(nibName: "XLAlbumView", bundle: NSBundle(forClass: self.classForCoder())).instantiateWithOwner(self, options: nil)[0] as! XLAlbumView
@@ -200,6 +206,12 @@ final class XLAlbumView: UIView, PHPhotoLibraryChangeObserver, UIGestureRecogniz
             }
         }
 
+    }
+
+    func upDatedImage(noti: NSNotification) {
+        self.images = noti.userInfo!["assets"] as! PHFetchResult
+        changeImage(images[0] as! PHAsset)
+        self.collectionView.reloadData()
     }
 
     //MARK: - PHPhotoLibraryChangeObserver

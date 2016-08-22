@@ -63,6 +63,7 @@ extension Delegate : UITableViewDelegate {
         let collectionItem = self.collectionItems[indexPath.row]
         self.selectedCollectionItems = collectionItem
         self.tableView.reloadData()
+        NSNotificationCenter.defaultCenter().postNotificationName(Handle.KUpImageWithAssetNotification, object: nil, userInfo: self.selectedCollectionItems)
         self.dismissBtnTapped(UIButton())
     }
 }
