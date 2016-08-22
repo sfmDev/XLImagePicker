@@ -7,3 +7,4 @@ Learn from YangMianShan(https://github.com/yahoo/YangMingShan) .From Yahoo Team.
 
 ###Release Log
 08/19 add ALbumPicker 
+02/22 change Album Asset
