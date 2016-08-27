@@ -6,5 +6,9 @@ AlbumPicker has been added.</br>
 Learn from YangMianShan(https://github.com/yahoo/YangMingShan) .From Yahoo Team.</br>
 
 ###Release Log
+08/27 New selected Anmation</br>
+08/22 change Album Asset</br>
 08/19 add ALbumPicker </br>
-02/22 change Album Asset</br>
+
+###TO DO
+<h4>selecte several in Albums</br>
