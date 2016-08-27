@@ -52,7 +52,8 @@ final class XLAlbumView: UIView, PHPhotoLibraryChangeObserver, UIGestureRecogniz
     var dragStartPos: CGPoint = CGPointZero
     let dragDiff: CGFloat     = 20.0
 
-    var seletedImageArray: [Int] = []
+//    var seletedImageArray: [PHAsset] = []
+    var seletedImageArray: [PHAsset] = []
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -98,13 +99,8 @@ final class XLAlbumView: UIView, PHPhotoLibraryChangeObserver, UIGestureRecogniz
         images = PHAsset.fetchAssetsWithMediaType(.Image, options: options)
 
         if images.count > 0 {
-
-            for _ in 0..<images.count {
-                self.seletedImageArray.append(0)
-            }
             changeImage(images[0] as! PHAsset)
             collectionView.reloadData()
-            collectionView.selectItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.None)
         }
 
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
@@ -397,6 +393,10 @@ extension XLAlbumView {
         }
         return  count
     }
+
+    func canAddPhoto() -> Bool {
+        return self.seletedImageArray.count < 9
+    }
 }
 
 //private typealias FlowOut = XLAlbumView
@@ -435,43 +435,82 @@ extension DataSource: UICollectionViewDataSource {
             }
 
         }
-        if self.seletedImageArray[indexPath.row] == 1{
-            cell.selectImage = UIImage(named: "selected")
-        } else {
-            cell.selectImage = UIImage()
+
+        if self.seletedImageArray.contains(asset) {
+            let selectionIndex = self.seletedImageArray.indexOf(asset)
+            print("selectionIndex ===\(selectionIndex)")
+            cell.selectionOrder = selectionIndex! + 1
+        }
+        return cell
+    }
+
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        if cell is XLAlbumViewCell {
+            (cell as! XLAlbumViewCell).animateHigtLight(true)
+        }
+    }
+
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+
+        if !self.canAddPhoto() {
+            return false
         }
 
-        return cell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        if cell is XLAlbumViewCell {
+            let albumViewCell = cell as! XLAlbumViewCell
+            albumViewCell.setNeedsAniamteSection()
+            albumViewCell.selectionOrder = self.seletedImageArray.count + 1
+        }
+        return true
+    }
+
+    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        if cell is XLAlbumViewCell {
+            (cell as! XLAlbumViewCell).animateHigtLight(false)
+        }
+    }
+
+    func collectionView(collectionView: UICollectionView, shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        if cell is XLAlbumViewCell {
+            (cell as! XLAlbumViewCell).setNeedsAniamteSection()
+        }
+        return true
+    }
+
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+
+        let fetchResult = self.images
+        let asset = self.images[indexPath.item] as! PHAsset
+
+        let removedIndex: Int = self.seletedImageArray.indexOf(asset)!
+        print("removedIndex=====\(removedIndex)")
+        
+        for index in (removedIndex)..<(self.seletedImageArray.count) {
+
+            let needReloadAsset = self.seletedImageArray[index]
+            let cell = collectionView.cellForItemAtIndexPath(NSIndexPath.init(forItem: (fetchResult.indexOfObject(needReloadAsset)), inSection: indexPath.section)) as! XLAlbumViewCell
+            cell.selectionOrder = cell.selectionOrder!
+        }
+
+//        self.seletedImageArray =  self.seletedImageArray.filter({ $0 != asset})
+
+        if self.seletedImageArray.count == 0 {
+
+        }
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
-        changeImage(images[indexPath.row] as! PHAsset)
+        changeImage(images[indexPath.item] as! PHAsset)
 
-        if self.seletedImageArray[indexPath.row] == 1 {
-            self.seletedImageArray[indexPath.row] = 0
+        let asset = self.images[indexPath.row] as! PHAsset
+        self.seletedImageArray.append(asset)
+        NSNotificationCenter.defaultCenter().postNotificationName(Handle.KUpImageCountNotification, object: nil)
 
-            let select = self.countAtIndex(indexPath.row, array: self.seletedImageArray)
-            self.phAssetArray.removeAtIndex(select)
-            NSNotificationCenter.defaultCenter().postNotificationName(Handle.KUpImageCountNotification, object: nil)
-
-            let index = NSIndexPath(forRow: indexPath.row, inSection: 0)
-            self.collectionView.reloadItemsAtIndexPaths([index])
-        } else {
-
-            let c = self.seletedImageArray.filter { $0 == 1 }
-            if c.count >= 9 {
-                return
-            }
-            
-            self.seletedImageArray[indexPath.row] = 1
-
-            self.phAssetArray.append(images[indexPath.row] as! PHAsset)
-            NSNotificationCenter.defaultCenter().postNotificationName(Handle.KUpImageCountNotification, object: nil)
-
-            let index = NSIndexPath(forRow: indexPath.row, inSection: 0)
-            self.collectionView.reloadItemsAtIndexPaths([index])
-        }
         imageView.changeScrollable(true)
 
         imageViewConstraintTop.constant = imageViewOriginalConstraintTop

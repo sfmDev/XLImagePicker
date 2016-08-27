@@ -16,25 +16,40 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="osU-mX-X80">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HpN-xy-Apx">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WeS-e7-A5a">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                    </imageView>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjO-5s-sEl">
+                        <rect key="frame" x="30" y="30" width="20" height="20"/>
+                        <color key="backgroundColor" red="0.28235294117647058" green="0.27450980392156865" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Z7a-pq-dQF"/>
+                            <constraint firstAttribute="width" constant="20" id="sCK-k6-JOy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="osU-mX-X80" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ahc-ys-30s"/>
-                <constraint firstAttribute="trailing" secondItem="HpN-xy-Apx" secondAttribute="trailing" id="Vni-l8-AB3"/>
+                <constraint firstAttribute="trailing" secondItem="WeS-e7-A5a" secondAttribute="trailing" id="EkS-wN-pEe"/>
+                <constraint firstAttribute="trailing" secondItem="HjO-5s-sEl" secondAttribute="trailing" id="TWf-og-5ic"/>
+                <constraint firstAttribute="bottom" secondItem="WeS-e7-A5a" secondAttribute="bottom" id="aen-5J-168"/>
                 <constraint firstItem="osU-mX-X80" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cBV-RR-pZ3"/>
+                <constraint firstItem="WeS-e7-A5a" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ceW-Rg-ird"/>
                 <constraint firstAttribute="trailing" secondItem="osU-mX-X80" secondAttribute="trailing" id="jdD-gl-xYO"/>
-                <constraint firstItem="HpN-xy-Apx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ong-Zk-tJB"/>
+                <constraint firstAttribute="bottom" secondItem="HjO-5s-sEl" secondAttribute="bottom" id="mJn-pl-b1u"/>
+                <constraint firstItem="WeS-e7-A5a" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mjp-K4-92q"/>
                 <constraint firstAttribute="bottom" secondItem="osU-mX-X80" secondAttribute="bottom" id="sfn-ha-IiZ"/>
-                <constraint firstAttribute="bottom" secondItem="HpN-xy-Apx" secondAttribute="bottom" id="sx1-tv-QhM"/>
-                <constraint firstItem="HpN-xy-Apx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zAP-Mo-qDg"/>
             </constraints>
             <connections>
                 <outlet property="imageView" destination="osU-mX-X80" id="NFf-Yu-ekQ"/>
-                <outlet property="selectedImage" destination="HpN-xy-Apx" id="5ue-F2-kf0"/>
+                <outlet property="selectionOrderLabel" destination="HjO-5s-sEl" id="mSn-0G-34t"/>
+                <outlet property="selectionVeil" destination="WeS-e7-A5a" id="v5f-1q-zx5"/>
             </connections>
         </collectionViewCell>
     </objects>

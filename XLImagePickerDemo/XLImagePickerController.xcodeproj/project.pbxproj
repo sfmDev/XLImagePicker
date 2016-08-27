@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		821230241D6FE745008885DC /* XLImagePickerController-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XLImagePickerController-Bridging-Header.h"; sourceTree = "<group>"; };
 		826B88D81D656030005D67AB /* XLAlbumPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLAlbumPickerViewController.swift; sourceTree = "<group>"; };
 		826B88DA1D656192005D67AB /* XLAlbumPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLAlbumPickerViewController.xib; sourceTree = "<group>"; };
 		826B88DC1D65645A005D67AB /* XLAlbumPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLAlbumPickerCell.swift; sourceTree = "<group>"; };
@@ -93,17 +94,18 @@
 			isa = PBXGroup;
 			children = (
 				828198431D508BC400D42A00 /* XLImageViewController.swift */,
+				828198441D508BC400D42A00 /* XLImageViewController.xib */,
 				826B88D81D656030005D67AB /* XLAlbumPickerViewController.swift */,
 				826B88DA1D656192005D67AB /* XLAlbumPickerViewController.xib */,
 				826B88DC1D65645A005D67AB /* XLAlbumPickerCell.swift */,
 				826B88DD1D65645A005D67AB /* XLAlbumPickerCell.xib */,
-				828198441D508BC400D42A00 /* XLImageViewController.xib */,
 				8281984D1D50963A00D42A00 /* XLImageBrowerView.swift */,
 				828198491D5093F600D42A00 /* XLAlbumView.swift */,
 				8281984B1D50941F00D42A00 /* XLAlbumView.xib */,
 				8281984F1D50A77B00D42A00 /* XLAlbumViewCell.swift */,
 				828198501D50A77B00D42A00 /* XLAlbumViewCell.xib */,
 				828198471D508DD300D42A00 /* Assets.xcassets */,
+				821230241D6FE745008885DC /* XLImagePickerController-Bridging-Header.h */,
 			);
 			path = XLImagePicker;
 			sourceTree = "<group>";
@@ -306,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = XLImagePickerController/Info.plist;
@@ -313,6 +316,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sfmDev.XLImagePickerController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "XLImagePickerController/XLImagePicker/XLImagePickerController-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -320,6 +325,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = XLImagePickerController/Info.plist;
@@ -327,6 +333,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sfmDev.XLImagePickerController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "XLImagePickerController/XLImagePicker/XLImagePickerController-Bridging-Header.h";
 			};
 			name = Release;
 		};

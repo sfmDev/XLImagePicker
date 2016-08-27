@@ -80,7 +80,6 @@ extension DataSource : UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithReuseIdentifier("XLAlbumPickerCell", forIndexPath: indexPath) as! XLAlbumPickerCell
         let cell = tableView.dequeueReusableCellWithIdentifier("XLAlbumPickerCell", forIndexPath: indexPath) as! XLAlbumPickerCell
 
         let collectionItem = self.collectionItems[indexPath.row]
