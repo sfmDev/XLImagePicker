@@ -11,4 +11,4 @@ Learn from YangMianShan(https://github.com/yahoo/YangMingShan) .From Yahoo Team.
 08/19 add ALbumPicker </br>
 
 ###TO DO
-<h4>selecte several in Albums</br>
+<h4>selecte several image in Albums</br>
